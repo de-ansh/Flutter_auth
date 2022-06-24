@@ -1,4 +1,5 @@
 import 'package:auth/firebase_options.dart';
+import 'package:auth/screens/home.dart';
 import 'package:auth/screens/loginpage.dart';
 import 'package:auth/screens/optionspage.dart';
 import 'package:auth/screens/signuppage.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         OptionsPage.routeName: (context) => const OptionsPage(),
         Loginpage.routeName: (context) => const Loginpage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
+        HomePage.routeName: (context) => const HomePage(),
       },
       home: const OptionsPage(),
     );

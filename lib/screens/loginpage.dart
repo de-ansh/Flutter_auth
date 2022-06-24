@@ -1,4 +1,7 @@
+import 'package:auth/screens/home.dart';
+import 'package:auth/services/firebaseauthmethod.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Loginpage extends StatefulWidget {
   static const String routeName = '/login';
@@ -11,6 +14,14 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  void loginUser() {
+    FirebaseAuthMethod(FirebaseAuth.instance).loginWithEmail(
+        email: nameController.text,
+        password: passwordController.text,
+        context: context);
+    Navigator.pushNamed(context, HomePage.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +31,6 @@ class _LoginpageState extends State<Loginpage> {
       ),
       body: ListView(
         children: [
-          Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(10),
-            child: const Text(
-              'Sign in',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
           Container(
             padding: const EdgeInsets.all(10),
             child: TextField(
@@ -54,7 +57,7 @@ class _LoginpageState extends State<Loginpage> {
             height: 50,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: loginUser,
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),

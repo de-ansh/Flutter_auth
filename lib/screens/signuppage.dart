@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../services/firebaseauthmethod.dart';
+import 'loginpage.dart';
 
 class SignUpPage extends StatefulWidget {
   static const String routeName = '/signup';
@@ -20,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
         email: UsernameController.text,
         password: passwordController.text,
         context: context);
+    Navigator.pushNamed(context, Loginpage.routeName);
   }
 
   @override
